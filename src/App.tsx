@@ -2,7 +2,7 @@ import {useState} from 'react';
 import './App.css';
 import { IconHourglass } from './components/Icons/IconHourglass/IconHourglass';
 import { Button } from './components/Button/Button';
-import { IconToggle } from './components/Icons/IconPlay/IconToggle';
+import { IconToggle } from './components/Icons/IconToggle/IconToggle';
 
 function App() {
 
