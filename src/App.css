@@ -13,7 +13,7 @@
   }
 }
 
-.App-header {
+.App-main {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -35,4 +35,34 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.control-panel {
+  margin-top: 20px;
+  display: flex;
+  gap: 40px;
+}
+
+.dial {
+  font-size: 40px;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
+  color: #282c34;
+}
+
+.input-time {
+  /* background-color: var(--main-color); */
+  width: 270px;
+  display: flex;
+  justify-content: center;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  color: var(--main-color);
+  padding: 20px;
+  /* color: whitesmoke; */
 }

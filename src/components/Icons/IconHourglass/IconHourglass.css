@@ -1,5 +1,5 @@
 .hourglass {
     width: 200px;
     height: 400px;
-    fill: rgb(156, 147, 147);
+    fill: var(--second-color);
 }

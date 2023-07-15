@@ -1,3 +1,5 @@
+@import './../../styles/variables.css';
+
 .button {
     margin-top: 30px;
     display: flex;
@@ -7,7 +9,7 @@
     min-width: 50px;
     border-radius: 50%;
     /* background-color: bisque; */
-    background-color: rgb(88, 8, 8);
+    background-color: var(--main-color);
     border: none;
 }
 
@@ -24,4 +26,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.button--l {
+    scale: 1.25;
+}
+
+.button--m {
+    scale: 1;
+}
+
+.button--s {
+    scale: 0.75;
+}
+
+.button--second {
+    background-color: var(--second-color);
 }
