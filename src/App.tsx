@@ -10,10 +10,17 @@ import { Timer } from "./components/Timer/Timer";
 
 function App() {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isPausing, setIsPausing] = useState(false);
   const [value, setValue] = useState("");
+  const hours = Number(value.slice(0, 2));
+  const minutes = Number(value.slice(3, 5));
+  const seconds = Number(value.slice(6, 8));
 
   function toggleTimer() {
-    setIsPlaying(!isPlaying);
+    if (value) {
+      setIsPlaying(!isPlaying);
+    }
+    setIsPausing(!isPausing);
   }
 
   function onReturn() {
@@ -25,10 +32,6 @@ function App() {
     console.log(value.slice(0, 2), value.slice(3, 5), value.slice(6, 8));
   }
 
-  const hours = Number(value.slice(0, 2));
-  const minutes = Number(value.slice(3, 5));
-  const seconds = Number(value.slice(6, 8));
-
   return (
     <div className="App">
       <main className="App-main">
@@ -37,6 +40,7 @@ function App() {
           <>
             <IconHourglass />
             <Timer
+              isPausing={isPausing}
               initialHours={hours}
               initialMinute={minutes}
               initialSeconds={seconds}
