@@ -1,27 +1,29 @@
 import { FC, useState, useEffect } from "react";
+import { makeTwoDigit } from '../../helpers/makeTwoDigit';
 
 type TTimerProps = {
   initialHours: number;
   initialMinute: number;
   initialSeconds: number;
-  isPausing: boolean;
+  setIsPausing: (isPlaying: boolean) => void;
+  setValue: (value: string) => void;
 };
 
-export const Timer: FC<TTimerProps> = (props) => {
-  const { initialHours = 0, initialMinute = 0, initialSeconds = 10, isPausing } = props;
+export const Timer: FC<TTimerProps> = ({initialHours = 0, initialMinute = 0, initialSeconds = 0, setIsPausing, setValue, }) => {
   const [hours, setHours] = useState(initialHours);
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
+
   useEffect(() => {
-    let myInterval = setInterval(() => {
+    const myInterval = setInterval(() => {
       if (seconds > 0) {
         setSeconds(seconds - 1);
       }
-
       if (seconds === 0 && minutes === 0 && hours === 0) {
         clearInterval(myInterval);
+        setValue("")
+        setIsPausing(true);
       }
-
       if (minutes === 0 && seconds === 0 && hours) {
         setHours(hours - 1);
         setMinutes(59);
@@ -38,18 +40,22 @@ export const Timer: FC<TTimerProps> = (props) => {
         setSeconds(59);
       }
     }, 1000);
+   
     return () => {
       clearInterval(myInterval);
     };
-  });
-  
-  const hoursSpan = hours < 10 ? "0" + hours : hours;
-  const minutesSpan = minutes < 10 ? "0" + minutes : minutes;
-  const secondsSpan = seconds < 10 ? "0" + seconds : seconds;
+  }, [hours, minutes, seconds]);
+
+  const hoursSpan = makeTwoDigit(hours);
+  const minutesSpan = makeTwoDigit(minutes);
+  const secondsSpan = makeTwoDigit(seconds);
 
   return (
-    <p className="dial" role="timer">
-      {hoursSpan + "  : " + minutesSpan + " : " + secondsSpan}
-    </p>
+    <>
+      {!hours && !minutes && !seconds ? <p>ВРЕМЯ ИСТЕКЛО</p> :  
+      <p className="dial" role="timer">
+        {hoursSpan + "  : " + minutesSpan + " : " + secondsSpan}
+      </p>}
+    </>
   );
 };

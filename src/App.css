@@ -49,13 +49,7 @@
   font-family: monospace;
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.5) sepia(1) saturate(5) hue-rotate(175deg);
-  color: #282c34;
-}
-
 .input-time {
-  /* background-color: var(--main-color); */
   width: 270px;
   display: flex;
   justify-content: center;
@@ -64,5 +58,4 @@ input[type="time"]::-webkit-calendar-picker-indicator {
   outline: none;
   color: var(--main-color);
   padding: 20px;
-  /* color: whitesmoke; */
 }

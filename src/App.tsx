@@ -1,11 +1,9 @@
-import { ChangeEvent, FormEventHandler, useRef, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./App.css";
 import { IconHourglass } from "./components/Icons/IconHourglass/IconHourglass";
 import { Button } from "./components/Button/Button";
 import { IconToggle } from "./components/Icons/IconToggle/IconToggle";
 import { IconUturnBack } from "./components/Icons/IconUturnBack/IconUturnBack";
-import Datetime from "react-datetime";
-import "react-datetime/css/react-datetime.css";
 import { Timer } from "./components/Timer/Timer";
 
 function App() {
@@ -18,11 +16,11 @@ function App() {
 
   function toggleTimer() {
     if (value) {
-      setIsPlaying(!isPlaying);
+      setIsPlaying(false);
     }
     setIsPausing(!isPausing);
   }
-
+  
   function onReturn() {
     setIsPlaying(true);
   }
@@ -35,15 +33,16 @@ function App() {
   return (
     <div className="App">
       <main className="App-main">
-        TIMER
+        <h1>TIMER</h1>
         {!isPlaying ? (
           <>
             <IconHourglass />
             <Timer
-              isPausing={isPausing}
               initialHours={hours}
               initialMinute={minutes}
               initialSeconds={seconds}
+              setIsPausing={setIsPausing}
+              setValue={setValue}
             />
           </>
         ) : (
@@ -59,13 +58,13 @@ function App() {
           {!isPlaying && (
             <Button
               size="s"
-              bgColor="second"
+              bgColor="secondary"
               icon={<IconUturnBack />}
               onClick={onReturn}
             />
           )}
           <Button
-            icon={<IconToggle isPlaying={isPlaying} />}
+            icon={<IconToggle isPlaying={!isPausing} />}
             onClick={toggleTimer}
           />
         </div>

@@ -40,6 +40,6 @@
     scale: 0.75;
 }
 
-.button--second {
+.button--secondary {
     background-color: var(--second-color);
 }

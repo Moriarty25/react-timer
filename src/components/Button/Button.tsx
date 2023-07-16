@@ -5,7 +5,7 @@ type TButtonProps = {
   text?: string;
   icon?: ReactElement;
   size?: "l" | "m" | "s";
-  bgColor?: "main" | "second";
+  bgColor?: "main" | "secondary";
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button: FC<TButtonProps> = ({
@@ -26,7 +26,7 @@ export const Button: FC<TButtonProps> = ({
           ? "button--s"
           : ""
       }
-        ${`${bgColor === "main" ? "button--main" : "button--second"}`}
+        ${`${bgColor === "main" ? "button--main" : "button--secondary"}`}
     `}
       {...attrs}
     >
